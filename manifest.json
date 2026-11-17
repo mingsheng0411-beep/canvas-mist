@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Canvas Mist · 雾白",
+  "version": "1.5.10",
+  "permissions": [
+    "storage"
+  ],
+  "description": "以淡蓝色课程卡片查看 UMD Canvas 当前成绩、未来七天作业和未读会话。",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://umd.instructure.com/*"
+      ],
+      "css": [
+        "theme.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://umd.instructure.com/",
+        "https://umd.instructure.com/?*",
+        "https://umd.instructure.com/dashboard*"
+      ],
+      "js": [
+        "canvas-api.js",
+        "dashboard.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://umd.instructure.com/calendar*"
+      ],
+      "js": [
+        "canvas-api.js",
+        "calendar.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
